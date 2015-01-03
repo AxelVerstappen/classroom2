@@ -10,12 +10,12 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
-@using (Html.BeginForm("Index", "Classroom", FormMethod.Get))
+@using (Html.BeginForm("Index", "Classroom", FormMethod.Get, new { @class = "form-inline" }))
 {
-    <p>
-        Name: @Html.TextBox("SearchString") <input type="submit" value="Filter" />
-    </p>
+    @Html.TextBox("SearchString", null, new { @class = "form-control", @placeholder="Name" }) <input type="submit" value="Filter" class="btn btn-default" />
 }
+
+<br />
 
 <table class="table">
     <tr>
