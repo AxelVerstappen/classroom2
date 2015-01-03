@@ -1,4 +1,4 @@
-﻿using System.Data.Entity;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -29,5 +29,9 @@ namespace Classroom2.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<Classroom2.Models.ClassroomModel> ClassroomModels { get; set; }
+
+        public System.Data.Entity.DbSet<Classroom2.Models.BuildingModel> BuildingModels { get; set; }
     }
 }
