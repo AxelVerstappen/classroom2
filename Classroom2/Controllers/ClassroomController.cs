@@ -7,6 +7,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
 
 namespace Classroom2.Controllers
 {
@@ -16,7 +18,7 @@ namespace Classroom2.Controllers
         private ClassroomContext db = new ClassroomContext();
 
         // GET: Classroom
-        public ActionResult Index(string searchString)
+        public ActionResult Index(string searchString, int? page)
         {
             var classrooms = from c in db.Classrooms select c;
 
@@ -25,7 +27,7 @@ namespace Classroom2.Controllers
                 classrooms = classrooms.Where(s => s.Name.Contains(searchString));
             } 
 
-            return View(classrooms);
+            return View(classrooms.ToList().ToPagedList(page ?? 1,5));
         }
 
         // GET: Classroom/Details/5

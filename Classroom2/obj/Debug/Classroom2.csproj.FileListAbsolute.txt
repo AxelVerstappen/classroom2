@@ -106,3 +106,7 @@ C:\xampp\htdocs\ASP\classroom2\Classroom2\bin\Microsoft.AspNet.Identity.EntityFr
 C:\xampp\htdocs\ASP\classroom2\Classroom2\obj\Debug\Classroom2.csprojResolveAssemblyReference.cache
 C:\xampp\htdocs\ASP\classroom2\Classroom2\obj\Debug\Classroom2.dll
 C:\xampp\htdocs\ASP\classroom2\Classroom2\obj\Debug\Classroom2.pdb
+C:\xampp\htdocs\ASP\classroom2\Classroom2\bin\PagedList.dll
+C:\xampp\htdocs\ASP\classroom2\Classroom2\bin\PagedList.Mvc.dll
+C:\xampp\htdocs\ASP\classroom2\Classroom2\bin\PagedList.xml
+C:\xampp\htdocs\ASP\classroom2\Classroom2\bin\PagedList.Mvc.xml

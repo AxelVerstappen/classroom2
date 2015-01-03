@@ -1,4 +1,6 @@
-@model IEnumerable<Classroom2.Models.Classroom>
+@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<Classroom2.Models.Classroom>
 
 @{
     ViewBag.Title = "Index";
@@ -20,10 +22,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.First().Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Places)
+            @Html.DisplayNameFor(model => model.First().Places)
         </th>
         <th></th>
     </tr>
@@ -45,3 +47,5 @@
 }
 
 </table>
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
