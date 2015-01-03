@@ -22,10 +22,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.First().Name)
+            @Html.ActionLink("Name", "Index", new { sortBy = ViewBag.SortNameParameter, searchString = Request.QueryString["searchString"], page = Request.QueryString["page"] })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.First().Places)
+            @Html.ActionLink("Places", "Index", new { sortBy = ViewBag.SortPlacesParameter, searchString = Request.QueryString["searchString"], page = Request.QueryString["page"] })
         </th>
         <th></th>
     </tr>
@@ -48,4 +48,4 @@
 
 </table>
 
-@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchString = Request.QueryString["searchString"], sortBy = Request["sortBy"] }))

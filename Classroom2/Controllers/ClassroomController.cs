@@ -18,16 +18,35 @@ namespace Classroom2.Controllers
         private ClassroomContext db = new ClassroomContext();
 
         // GET: Classroom
-        public ActionResult Index(string searchString, int? page)
+        public ActionResult Index(string searchString, int? page, string sortBy)
         {
+            ViewBag.SortNameParameter = string.IsNullOrEmpty(sortBy) ? "Name desc" : "";
+            ViewBag.SortPlacesParameter = sortBy == "Places" ? "Places desc" : "Places";
+
             var classrooms = from c in db.Classrooms select c;
 
             if (!String.IsNullOrEmpty(searchString))
             {
                 classrooms = classrooms.Where(s => s.Name.Contains(searchString));
-            } 
+            }
 
-            return View(classrooms.ToList().ToPagedList(page ?? 1,5));
+            switch (sortBy)
+            {
+                case "Name desc":
+                    classrooms = classrooms.OrderByDescending(s => s.Name);
+                    break;
+                case "Places desc":
+                    classrooms = classrooms.OrderByDescending(s => s.Places);
+                    break;
+                case "Places":
+                    classrooms = classrooms.OrderBy(s => s.Places);
+                    break;
+                default:
+                    classrooms = classrooms.OrderBy(s => s.Name);
+                    break;
+            }
+
+            return View(classrooms.ToPagedList(page ?? 1,5));
         }
 
         // GET: Classroom/Details/5
