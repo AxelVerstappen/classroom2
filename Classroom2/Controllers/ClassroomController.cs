@@ -16,9 +16,16 @@ namespace Classroom2.Controllers
         private ClassroomContext db = new ClassroomContext();
 
         // GET: Classroom
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            return View(db.Classrooms.ToList());
+            var classrooms = from c in db.Classrooms select c;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                classrooms = classrooms.Where(s => s.Name.Contains(searchString));
+            } 
+
+            return View(classrooms);
         }
 
         // GET: Classroom/Details/5
