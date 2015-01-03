@@ -29,7 +29,6 @@ C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\bin\System.Web.We
 C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\bin\System.Web.WebPages.Razor.dll
 C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\bin\WebGrease.dll
 C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\bin\Antlr3.Runtime.pdb
-C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\bin\EntityFramework.xml
 C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\bin\EntityFramework.SqlServer.xml
 C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\bin\Microsoft.Owin.xml
 C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\bin\Microsoft.Owin.Host.SystemWeb.xml
@@ -42,7 +41,6 @@ C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\bin\Microsoft.Owi
 C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\bin\Newtonsoft.Json.xml
 C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\bin\System.Web.Helpers.xml
-C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\bin\System.Web.Mvc.xml
 C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\bin\System.Web.Razor.xml
 C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\bin\System.Web.WebPages.xml
 C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\bin\System.Web.WebPages.Deployment.xml

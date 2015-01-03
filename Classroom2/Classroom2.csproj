@@ -156,8 +156,8 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Context\ClassroomContext.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\BuildingController.cs" />
     <Compile Include="Controllers\ClassroomController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -165,8 +165,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\BuildingModel.cs" />
-    <Compile Include="Models\ClassroomModel.cs" />
+    <Compile Include="Models\Classroom.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -241,10 +240,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Classroom\Create.cshtml" />
     <Content Include="Views\Classroom\Index.cshtml" />
-    <Content Include="Views\Building\Create.cshtml" />
-    <Content Include="Views\Building\Index.cshtml" />
+    <Content Include="Views\Classroom\Create.cshtml" />
+    <Content Include="Views\Classroom\Details.cshtml" />
+    <Content Include="Views\Classroom\Edit.cshtml" />
+    <Content Include="Views\Classroom\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

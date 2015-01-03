@@ -1,7 +1,10 @@
+using Classroom2.Context;
 using Classroom2.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -9,17 +12,26 @@ namespace Classroom2.Controllers
 {
     public class ClassroomController : Controller
     {
+
+        private ClassroomContext db = new ClassroomContext();
+
         // GET: Classroom
         public ActionResult Index()
         {
-            var context = new ApplicationDbContext();
-            return View(context.ClassroomModels);
+            return View(db.Classrooms.ToList());
         }
 
         // GET: Classroom/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            return View();
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            Classroom classroom = db.Classrooms.Find(id);
+            if (classroom == null)
+                return HttpNotFound();
+
+            return View(classroom);
         }
 
         // GET: Classroom/Create
@@ -30,19 +42,18 @@ namespace Classroom2.Controllers
 
         // POST: Classroom/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Classroom classroom)
         {
             try
             {
-                // TODO: Add insert logic here
-                var newClassroom = new ClassroomModel();
-                newClassroom.Name = "test";
-                newClassroom.Places = 75;
-                var context = new ApplicationDbContext();
-                context.ClassroomModels.Add(newClassroom);
-                context.SaveChanges();
+                if (ModelState.IsValid)
+                {
+                    db.Classrooms.Add(classroom);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(classroom);
 
-                return RedirectToAction("Index");
             }
             catch
             {
@@ -51,20 +62,31 @@ namespace Classroom2.Controllers
         }
 
         // GET: Classroom/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            Classroom classroom = db.Classrooms.Find(id);
+            if (classroom == null)
+                return HttpNotFound();
+
+            return View(classroom);
         }
 
         // POST: Classroom/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Classroom classroom)
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Entry(classroom).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(classroom);
             }
             catch
             {
@@ -73,19 +95,34 @@ namespace Classroom2.Controllers
         }
 
         // GET: Classroom/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            Classroom classroom = db.Classrooms.Find(id);
+
+            if (classroom == null)
+                return HttpNotFound();
+
+            return View(classroom);
         }
 
         // POST: Classroom/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int? id, Classroom clas)
         {
             try
             {
-                // TODO: Add delete logic here
+                if (id == null)
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
+                Classroom classroom = db.Classrooms.Find(id);
+                if (classroom == null)
+                    return HttpNotFound();
+
+                db.Classrooms.Remove(classroom);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
