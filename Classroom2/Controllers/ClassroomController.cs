@@ -64,6 +64,8 @@ namespace Classroom2.Controllers
         // GET: Classroom/Create
         public ActionResult Create()
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index");
             var viewModel = new ClassroomViewModel();
             viewModel.Buildings = new List<SelectListItem>();
             viewModel.Buildings.Add(new SelectListItem() { Text = "Selecteer een gebouw" });
@@ -84,6 +86,8 @@ namespace Classroom2.Controllers
         [HttpPost]
         public ActionResult Create(ClassroomViewModel classroom)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index");
             var newClassroom = new Classroom();
             newClassroom.Name = classroom.Name;
             newClassroom.Places = classroom.Places;
@@ -97,6 +101,8 @@ namespace Classroom2.Controllers
         // GET: Classroom/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index");
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
@@ -139,6 +145,8 @@ namespace Classroom2.Controllers
         [HttpPost]
         public ActionResult Edit(ClassroomViewModel classroom, int Id)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index");
             var newClassroom = db.Classrooms.Find(Id);
             newClassroom.Name = classroom.Name;
             newClassroom.Places = classroom.Places;
@@ -151,6 +159,8 @@ namespace Classroom2.Controllers
         // GET: Classroom/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index");
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
@@ -166,6 +176,8 @@ namespace Classroom2.Controllers
         [HttpPost]
         public ActionResult Delete(int? id, Classroom clas)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index");
             try
             {
                 if (id == null)
