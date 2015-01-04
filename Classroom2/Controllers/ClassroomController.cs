@@ -37,7 +37,21 @@ namespace Classroom2.Controllers
         // GET: Classroom/Create
         public ActionResult Create()
         {
-            return View();
+            var view = new ClassroomViewModel();
+            view.Buildings = new List<SelectListItem>();
+            //view.Buildings.Add(new SelectListItem() { Text = "Selecteer een gebouw" });
+
+            foreach (var building in db.Buildings)
+            {
+                view.Buildings.Add(new SelectListItem
+                {
+                    Text = building.Name,
+                    Value = building.Id.ToString(),
+                    Selected = false
+                });
+            }
+
+            return View(view);
         }
 
         // POST: Classroom/Create

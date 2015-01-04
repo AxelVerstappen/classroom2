@@ -1,4 +1,4 @@
-﻿@model Classroom2.Models.ClassroomViewModel
+﻿@model Classroom2.Models.Building
 
 @{
     ViewBag.Title = "Create";
@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>ClassroomViewModel</h4>
+        <h4>Building</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -24,19 +24,18 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Places, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.CoordX, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Places, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Places, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.CoordX, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CoordX, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.BuildingId, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.CoordY, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(x => x.BuildingId, Model.Buildings)
-
-                @Html.ValidationMessageFor(model => model.BuildingId, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.CoordY, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CoordY, "", new { @class = "text-danger" })
             </div>
         </div>
 

@@ -10,5 +10,6 @@ namespace Classroom2.Context
     public class ClassroomContext : DbContext
     {
         public DbSet<Classroom> Classrooms { get; set; }
+        public DbSet<Building> Buildings { get; set; }
     }
 }
