@@ -199,6 +199,11 @@ namespace Classroom2.Controllers
                 return View();
             }
         }
+        public ActionResult SwitchLanguage(string language)
+        {
+            Session.Add("taal", language);
+            return RedirectToAction("Index");
+        }
     }
     public class LanguageFilter
        : ActionFilterAttribute
@@ -219,4 +224,5 @@ namespace Classroom2.Controllers
         }
 
     }
+     
 }
