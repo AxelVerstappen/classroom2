@@ -17,7 +17,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Classroom Reservation", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink( Localization.Get("titel"), "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -25,6 +25,8 @@
                     <li>@Html.ActionLink("Classrooms", "../classroom")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLinkLocalization("English", "Index", "Locales", new { lang = "en_US" })</li>
+                    <li>@Html.ActionLinkLocalization("Nederlands", "Index", "Locales", new { lang = "nl_BE" })</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
