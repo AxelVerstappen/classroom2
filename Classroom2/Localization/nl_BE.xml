@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
+=======
+﻿<?xml version="1.0" encoding="UTF-8"?>
+>>>>>>> origin/master
 <lang>
   <item id="lng">NL</item>
   <item id="lngLNG">nl-BE</item>
   <item id="lngName">Nederlands</item>
 
   <item id="titel">Welkom</item>
+<<<<<<< HEAD
 </lang>
+=======
+</lang>
+>>>>>>> origin/master

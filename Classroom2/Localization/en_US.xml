@@ -3,6 +3,12 @@
 	<item id="lng">EN</item>
 	<item id="lngLNG">en-US</item>
 	<item id="lngName">English</item>
+<<<<<<< HEAD
 
   <item id="titel">Welcome</item>
 </lang>
+=======
+
+  <item id="titel">Welcome</item>
+</lang>
+>>>>>>> origin/master
