@@ -117,7 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="lblCreate" xml:space="preserve">
+    <value>Nieuwe aanmaken</value>
+  </data>
+  <data name="lblDelete" xml:space="preserve">
+    <value>Verwijderen</value>
+  </data>
+  <data name="lblDetails" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="lblEdit" xml:space="preserve">
+    <value>Bewerken</value>
+  </data>
+  <data name="lblName" xml:space="preserve">
+    <value>Naam</value>
+  </data>
+  <data name="lblPlaces" xml:space="preserve">
+    <value>Plaatsen</value>
+  </data>
+  <data name="navAbout" xml:space="preserve">
+    <value>Over ons</value>
+  </data>
+  <data name="navBuilding" xml:space="preserve">
+    <value>Gebouw</value>
+  </data>
+  <data name="navClassroom" xml:space="preserve">
+    <value>Klaslokaal</value>
+  </data>
+  <data name="navContact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="navHome" xml:space="preserve">
+    <value>Home</value>
+  </data>
   <data name="Titel" xml:space="preserve">
-    <value>Titel NL</value>
+    <value>Welkom</value>
   </data>
 </root>

@@ -61,7 +61,106 @@ namespace Classroom2 {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Titel NL.
+        ///   Looks up a localized string similar to Nieuwe aanmaken.
+        /// </summary>
+        public static string lblCreate {
+            get {
+                return ResourceManager.GetString("lblCreate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verwijderen.
+        /// </summary>
+        public static string lblDelete {
+            get {
+                return ResourceManager.GetString("lblDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Details.
+        /// </summary>
+        public static string lblDetails {
+            get {
+                return ResourceManager.GetString("lblDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bewerken.
+        /// </summary>
+        public static string lblEdit {
+            get {
+                return ResourceManager.GetString("lblEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Naam.
+        /// </summary>
+        public static string lblName {
+            get {
+                return ResourceManager.GetString("lblName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plaatsen.
+        /// </summary>
+        public static string lblPlaces {
+            get {
+                return ResourceManager.GetString("lblPlaces", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Over ons.
+        /// </summary>
+        public static string navAbout {
+            get {
+                return ResourceManager.GetString("navAbout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gebouw.
+        /// </summary>
+        public static string navBuilding {
+            get {
+                return ResourceManager.GetString("navBuilding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Klaslokaal.
+        /// </summary>
+        public static string navClassroom {
+            get {
+                return ResourceManager.GetString("navClassroom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contact.
+        /// </summary>
+        public static string navContact {
+            get {
+                return ResourceManager.GetString("navContact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        public static string navHome {
+            get {
+                return ResourceManager.GetString("navHome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welkom.
         /// </summary>
         public static string Titel {
             get {

@@ -11,13 +11,13 @@
 @if(User.Identity.IsAuthenticated)
 { 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink(@LocalizedValues.lblCreate, "Create")
 </p>
 }
 
 @using (Html.BeginForm("Index", "Classroom", FormMethod.Get, new { @class = "form-inline" }))
 {
-    @Html.TextBox("SearchString", null, new { @class = "form-control", @placeholder="Name" }) <input type="submit" value="Filter" class="btn btn-default" />
+    @Html.TextBox("SearchString", null, new { @class = "form-control", @placeholder=@LocalizedValues.lblName }) <input type="submit" value="Filter" class="btn btn-default" />
 }
 
 <br />
@@ -25,10 +25,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink("Name", "Index", new { sortBy = ViewBag.SortNameParameter, searchString = Request.QueryString["searchString"], page = Request.QueryString["page"] })
+            @Html.ActionLink(@LocalizedValues.lblName, "Index", new { sortBy = ViewBag.SortNameParameter, searchString = Request.QueryString["searchString"], page = Request.QueryString["page"] })
         </th>
         <th>
-            @Html.ActionLink("Places", "Index", new { sortBy = ViewBag.SortPlacesParameter, searchString = Request.QueryString["searchString"], page = Request.QueryString["page"] })
+            @Html.ActionLink(@LocalizedValues.lblPlaces, "Index", new { sortBy = ViewBag.SortPlacesParameter, searchString = Request.QueryString["searchString"], page = Request.QueryString["page"] })
         </th>
         <th></th>
     </tr>
@@ -44,11 +44,11 @@
         <td>
             @if (User.Identity.IsAuthenticated)
             {
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                @Html.ActionLink(@LocalizedValues.lblEdit, "Edit", new { id = item.Id })
                 @: |
-                @Html.ActionLink("Details", "Details", new { id = item.Id })
+                @Html.ActionLink(@LocalizedValues.lblDetails, "Details", new { id = item.Id })
                 @: |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                @Html.ActionLink(@LocalizedValues.lblDelete, "Delete", new { id = item.Id })
             }
         </td>
     </tr>
