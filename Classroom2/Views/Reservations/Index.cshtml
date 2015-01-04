@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Classroom2.Models.Reservation>
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<Classroom2.Models.Reservation>
 
 @{
     ViewBag.Title = "Index";
@@ -12,22 +14,27 @@
     </p>
 }
 
+@using (Html.BeginForm("Index", "Reservation", FormMethod.Get, new { @class = "form-inline" }))
+{
+    @Html.TextBox("SearchString", null, new { @class = "form-control", @placeholder = "Course name" }) <input type="submit" value="Filter" class="btn btn-default" />
+}
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CourseName)
+            @Html.ActionLink("CourseName", "Index", new { sortBy = ViewBag.SortNameParameter, searchString = Request.QueryString["searchString"], page = Request.QueryString["page"] })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TeacherName)
+            @Html.ActionLink("TeacherName", "Index", new { sortBy = ViewBag.SortNameParameter, searchString = Request.QueryString["searchString"], page = Request.QueryString["page"] })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.StartTime)
+            @Html.DisplayNameFor(model => model.First().StartTime)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.EndTime)
+            @Html.DisplayNameFor(model => model.First().EndTime)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ClassroomId)
+            @Html.DisplayNameFor(model => model.First().ClassroomId)
         </th>
         <th></th>
     </tr>
@@ -63,3 +70,5 @@
 }
 
 </table>
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchString = Request.QueryString["searchString"], sortBy = Request["sortBy"] }))
