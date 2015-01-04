@@ -160,6 +160,15 @@ namespace Classroom2 {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reservaties.
+        /// </summary>
+        public static string navReservations {
+            get {
+                return ResourceManager.GetString("navReservations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Welkom.
         /// </summary>
         public static string Titel {

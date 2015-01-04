@@ -21,9 +21,9 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Reservations", "../reservations")</li>
-                    <li>@Html.ActionLink("Classrooms", "../classroom")</li>
-                    <li>@Html.ActionLink("Buildings", "../building")</li>
+                    <li>@Html.ActionLink(@LocalizedValues.navReservations, "../reservations")</li>
+                    <li>@Html.ActionLink(@LocalizedValues.navClassroom, "../classroom")</li>
+                    <li>@Html.ActionLink(@LocalizedValues.navBuilding, "../building")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

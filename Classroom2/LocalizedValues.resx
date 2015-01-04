@@ -153,4 +153,7 @@
   <data name="Titel" xml:space="preserve">
     <value>Welkom</value>
   </data>
+  <data name="navReservations" xml:space="preserve">
+    <value>Reservaties</value>
+  </data>
 </root>
