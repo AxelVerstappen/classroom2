@@ -2,6 +2,7 @@
 using Classroom2.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -61,20 +62,30 @@ namespace Classroom2.Controllers
         }
 
         // GET: Building/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if(id==null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            var building = db.Buildings.Find(id);
+            if (building == null)
+                return HttpNotFound();
+            
+            return View(building);
         }
 
         // POST: Building/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, Building building)
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                if(ModelState.IsValid)
+                {
+                    db.Entry(building).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(building);
             }
             catch
             {
@@ -83,20 +94,36 @@ namespace Classroom2.Controllers
         }
 
         // GET: Building/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if(id==null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var building = db.Buildings.Find(id);
+
+            if (building == null)
+                return HttpNotFound();
+
+            return View(building);
         }
 
         // POST: Building/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, Building building)
         {
             try
             {
-                // TODO: Add delete logic here
+                if(ModelState.IsValid)
+                {
+                    Building b = db.Buildings.Find(id);
+                    if (b == null)
+                        return HttpNotFound();
 
-                return RedirectToAction("Index");
+                    db.Buildings.Remove(b);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(building);
             }
             catch
             {
