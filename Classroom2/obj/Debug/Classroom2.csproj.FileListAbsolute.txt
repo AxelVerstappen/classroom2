@@ -56,3 +56,4 @@ C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\bin\Microsoft.Asp
 C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\bin\Microsoft.AspNet.Identity.EntityFramework.xml
 C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\obj\Debug\Classroom2.dll
 C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\obj\Debug\Classroom2.pdb
+C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\obj\Debug\Classroom2.csprojResolveAssemblyReference.cache

@@ -11,5 +11,6 @@ namespace Classroom2.Context
     {
         public DbSet<Classroom> Classrooms { get; set; }
         public DbSet<Building> Buildings { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
     }
 }
