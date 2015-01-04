@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using Classroom2.Context;
 using Classroom2.Models;
+using PagedList;
+using PagedList.Mvc;
 
 namespace Classroom2.Controllers
 {
@@ -16,9 +18,35 @@ namespace Classroom2.Controllers
         private ClassroomContext db = new ClassroomContext();
 
         // GET: Reservations
-        public ActionResult Index()
+        public ActionResult Index(string searchString, int? page, string sortBy)
         {
-            return View(db.Reservations.ToList());
+            ViewBag.SortCourseNameParameter = string.IsNullOrEmpty(sortBy) ? "CourseName desc" : "";
+            ViewBag.SortTeacherNameParameter = sortBy == "TeacherName" ? "TeacherName desc" : "TeacherName";
+
+            var reservations = from r in db.Reservations select r;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                reservations = reservations.Where(r => r.CourseName.Contains(searchString));
+            }
+
+            switch (sortBy)
+            {
+                case "Name desc":
+                    reservations = reservations.OrderByDescending(r => r.CourseName);
+                    break;
+                case "Places desc":
+                    reservations = reservations.OrderByDescending(r => r.TeacherName);
+                    break;
+                case "Places":
+                    reservations = reservations.OrderBy(r => r.TeacherName);
+                    break;
+                default:
+                    reservations = reservations.OrderBy(r => r.CourseName);
+                    break;
+            }
+
+            return View(reservations.ToPagedList(page ?? 1, 5));
         }
 
         // GET: Reservations/Details/5
