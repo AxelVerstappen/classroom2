@@ -38,6 +38,8 @@ namespace Classroom2.Controllers
         // GET: Building/Create
         public ActionResult Create()
         {
+            if(!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index");
             return View();
         }
 
@@ -45,6 +47,8 @@ namespace Classroom2.Controllers
         [HttpPost]
         public ActionResult Create(Building building)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index");
             try
             {
                 if (ModelState.IsValid)
@@ -64,6 +68,8 @@ namespace Classroom2.Controllers
         // GET: Building/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index");
             if(id==null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             var building = db.Buildings.Find(id);
@@ -77,6 +83,8 @@ namespace Classroom2.Controllers
         [HttpPost]
         public ActionResult Edit(int id, Building building)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index");
             try
             {
                 if(ModelState.IsValid)
@@ -96,6 +104,8 @@ namespace Classroom2.Controllers
         // GET: Building/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index");
             if(id==null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
@@ -111,6 +121,8 @@ namespace Classroom2.Controllers
         [HttpPost]
         public ActionResult Delete(int id, Building building)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index");
             try
             {
                 if(ModelState.IsValid)
