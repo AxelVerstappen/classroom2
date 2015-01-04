@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -14,7 +14,7 @@ namespace Classroom2.Models
         [Required]
         public int Places { get; set; }
 
-        public int BuildingId { get; set; }
+        public int SelectedBuildingId { get; set; }
         public List<SelectListItem> Buildings { get; set; }
     }
 }

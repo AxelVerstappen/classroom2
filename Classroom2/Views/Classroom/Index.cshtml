@@ -1,4 +1,6 @@
-@model IEnumerable<Classroom2.Models.Classroom>
+@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<Classroom2.Models.Classroom>
 
 @{
     ViewBag.Title = "Index";
@@ -9,13 +11,21 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@using (Html.BeginForm("Index", "Classroom", FormMethod.Get, new { @class = "form-inline" }))
+{
+    @Html.TextBox("SearchString", null, new { @class = "form-control", @placeholder="Name" }) <input type="submit" value="Filter" class="btn btn-default" />
+}
+
+<br />
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.ActionLink("Name", "Index", new { sortBy = ViewBag.SortNameParameter, searchString = Request.QueryString["searchString"], page = Request.QueryString["page"] })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Places)
+            @Html.ActionLink("Places", "Index", new { sortBy = ViewBag.SortPlacesParameter, searchString = Request.QueryString["searchString"], page = Request.QueryString["page"] })
         </th>
         <th></th>
     </tr>
@@ -37,3 +47,5 @@
 }
 
 </table>
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchString = Request.QueryString["searchString"], sortBy = Request["sortBy"] }))

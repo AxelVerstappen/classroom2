@@ -7,6 +7,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
 
 namespace Classroom2.Controllers
 {
@@ -16,9 +18,35 @@ namespace Classroom2.Controllers
         private ClassroomContext db = new ClassroomContext();
 
         // GET: Classroom
-        public ActionResult Index()
+        public ActionResult Index(string searchString, int? page, string sortBy)
         {
-            return View(db.Classrooms.ToList());
+            ViewBag.SortNameParameter = string.IsNullOrEmpty(sortBy) ? "Name desc" : "";
+            ViewBag.SortPlacesParameter = sortBy == "Places" ? "Places desc" : "Places";
+
+            var classrooms = from c in db.Classrooms select c;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                classrooms = classrooms.Where(s => s.Name.Contains(searchString));
+            }
+
+            switch (sortBy)
+            {
+                case "Name desc":
+                    classrooms = classrooms.OrderByDescending(s => s.Name);
+                    break;
+                case "Places desc":
+                    classrooms = classrooms.OrderByDescending(s => s.Places);
+                    break;
+                case "Places":
+                    classrooms = classrooms.OrderBy(s => s.Places);
+                    break;
+                default:
+                    classrooms = classrooms.OrderBy(s => s.Name);
+                    break;
+            }
+
+            return View(classrooms.ToPagedList(page ?? 1,5));
         }
 
         // GET: Classroom/Details/5
@@ -26,7 +54,6 @@ namespace Classroom2.Controllers
         {
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
             Classroom classroom = db.Classrooms.Find(id);
             if (classroom == null)
                 return HttpNotFound();
@@ -37,13 +64,12 @@ namespace Classroom2.Controllers
         // GET: Classroom/Create
         public ActionResult Create()
         {
-            var view = new ClassroomViewModel();
-            view.Buildings = new List<SelectListItem>();
-            //view.Buildings.Add(new SelectListItem() { Text = "Selecteer een gebouw" });
-
+            var viewModel = new ClassroomViewModel();
+            viewModel.Buildings = new List<SelectListItem>();
+            viewModel.Buildings.Add(new SelectListItem() { Text = "Selecteer een gebouw" });
             foreach (var building in db.Buildings)
             {
-                view.Buildings.Add(new SelectListItem
+                viewModel.Buildings.Add(new SelectListItem
                 {
                     Text = building.Name,
                     Value = building.Id.ToString(),
@@ -51,28 +77,21 @@ namespace Classroom2.Controllers
                 });
             }
 
-            return View(view);
+            return View(viewModel);
         }
 
         // POST: Classroom/Create
         [HttpPost]
-        public ActionResult Create(Classroom classroom)
+        public ActionResult Create(ClassroomViewModel classroom)
         {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    db.Classrooms.Add(classroom);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                return View(classroom);
+            var newClassroom = new Classroom();
+            newClassroom.Name = classroom.Name;
+            newClassroom.Places = classroom.Places;
+            newClassroom.BuildingId = classroom.SelectedBuildingId;
 
-            }
-            catch
-            {
-                return View();
-            }
+            db.Classrooms.Add(newClassroom);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // GET: Classroom/Edit/5
@@ -82,30 +101,51 @@ namespace Classroom2.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             Classroom classroom = db.Classrooms.Find(id);
+
             if (classroom == null)
                 return HttpNotFound();
 
-            return View(classroom);
+            var viewModel = new ClassroomViewModel();
+            viewModel.SelectedBuildingId = classroom.BuildingId;
+            viewModel.Name = classroom.Name;
+            viewModel.Places = classroom.Places;
+
+            viewModel.Buildings = new List<SelectListItem>();
+            viewModel.Buildings.Add(new SelectListItem() { Text = "Selecteer een gebouw" });
+            foreach (var building in db.Buildings)
+            {
+
+                if(viewModel.SelectedBuildingId == building.Id) {
+                    viewModel.Buildings.Add(new SelectListItem
+                    {
+                        Text = building.Name,
+                        Value = building.Id.ToString(),
+                        Selected = true
+                    });
+                } else {
+                    viewModel.Buildings.Add(new SelectListItem
+                    {
+                        Text = building.Name,
+                        Value = building.Id.ToString(),
+                        Selected = false
+                    });
+                }
+            }
+
+            return View(viewModel);
         }
 
         // POST: Classroom/Edit/5
         [HttpPost]
-        public ActionResult Edit(Classroom classroom)
+        public ActionResult Edit(ClassroomViewModel classroom, int Id)
         {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    db.Entry(classroom).State = EntityState.Modified;
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                return View(classroom);
-            }
-            catch
-            {
-                return View();
-            }
+            var newClassroom = db.Classrooms.Find(Id);
+            newClassroom.Name = classroom.Name;
+            newClassroom.Places = classroom.Places;
+            newClassroom.BuildingId = classroom.SelectedBuildingId;
+            db.Entry(newClassroom).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // GET: Classroom/Delete/5

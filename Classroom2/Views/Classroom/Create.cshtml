@@ -1,4 +1,4 @@
-﻿@model Classroom2.Models.ClassroomViewModel
+@model Classroom2.Models.ClassroomViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -32,11 +32,11 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.BuildingId, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.SelectedBuildingId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(x => x.BuildingId, Model.Buildings)
+                @Html.DropDownListFor(model => model.SelectedBuildingId, Model.Buildings)
 
-                @Html.ValidationMessageFor(model => model.BuildingId, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.SelectedBuildingId, "", new { @class = "text-danger" })
             </div>
         </div>
 
