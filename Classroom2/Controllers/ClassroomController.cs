@@ -46,7 +46,7 @@ namespace Classroom2.Controllers
                     break;
             }
 
-            return View(classrooms.ToPagedList(page ?? 1,5));
+            return View(classrooms.ToPagedList(page ?? 1, 5));
         }
 
         // GET: Classroom/Details/5
@@ -121,14 +121,17 @@ namespace Classroom2.Controllers
             foreach (var building in db.Buildings)
             {
 
-                if(viewModel.SelectedBuildingId == building.Id) {
+                if (viewModel.SelectedBuildingId == building.Id)
+                {
                     viewModel.Buildings.Add(new SelectListItem
                     {
                         Text = building.Name,
                         Value = building.Id.ToString(),
                         Selected = true
                     });
-                } else {
+                }
+                else
+                {
                     viewModel.Buildings.Add(new SelectListItem
                     {
                         Text = building.Name,
@@ -196,5 +199,24 @@ namespace Classroom2.Controllers
                 return View();
             }
         }
+    }
+    public class LanguageFilter
+       : ActionFilterAttribute
+    {
+        public override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            var taal = (string)filterContext.HttpContext.Session["taal"];
+            SetLanguage(taal);
+        }
+
+        protected void SetLanguage(string language)
+        {
+            if (!string.IsNullOrEmpty(language))
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(language);
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(language);
+            }
+        }
+
     }
 }

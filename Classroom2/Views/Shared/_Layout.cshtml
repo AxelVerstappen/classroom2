@@ -27,6 +27,8 @@
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
+            @Html.ActionLink("NL", "SwitchLanguage", new { language = "nl" })
+            @Html.ActionLink("EN", "SwitchLanguage", new { language = "en" })
         </div>
     </div>
     <div class="container body-content">
