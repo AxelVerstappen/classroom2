@@ -22,10 +22,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink("CourseName", "Index", new { sortBy = ViewBag.SortNameParameter, searchString = Request.QueryString["searchString"], page = Request.QueryString["page"] })
+            @Html.ActionLink("CourseName", "Index", new { sortBy = ViewBag.SortCourseNameParameter, searchString = Request.QueryString["searchString"], page = Request.QueryString["page"] })
         </th>
         <th>
-            @Html.ActionLink("TeacherName", "Index", new { sortBy = ViewBag.SortNameParameter, searchString = Request.QueryString["searchString"], page = Request.QueryString["page"] })
+            @Html.ActionLink("TeacherName", "Index", new { sortBy = ViewBag.SortTeacherNameParameter, searchString = Request.QueryString["searchString"], page = Request.QueryString["page"] })
         </th>
         <th>
             @Html.DisplayNameFor(model => model.First().StartTime)
