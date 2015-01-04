@@ -170,3 +170,10 @@ C:\Users\Mitchell\Source\Repos\classroom2\Classroom2\obj\Debug\Classroom2.dll
 C:\Users\Mitchell\Source\Repos\classroom2\Classroom2\obj\Debug\Classroom2.pdb
 C:\Users\Mitchell\Source\Repos\classroom2\Classroom2\bin\Insya.Localization.dll
 C:\Users\Mitchell\Source\Repos\classroom2\Classroom2\bin\Insya.Localization.pdb
+C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\obj\Debug\Classroom2.csprojResolveAssemblyReference.cache
+C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\bin\Insya.Localization.dll
+C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\bin\PagedList.dll
+C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\bin\PagedList.Mvc.dll
+C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\bin\Insya.Localization.pdb
+C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\bin\PagedList.xml
+C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\bin\PagedList.Mvc.xml
