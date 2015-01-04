@@ -3,10 +3,9 @@
 @model IPagedList<Classroom2.Models.Reservation>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Reservations";
 }
 
-<h2>Index</h2>
 @if (User.Identity.IsAuthenticated)
 {
     <p>
@@ -22,19 +21,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink("CourseName", "Index", new { sortBy = ViewBag.SortCourseNameParameter, searchString = Request.QueryString["searchString"], page = Request.QueryString["page"] })
+            @Html.ActionLink("Course", "Index", new { sortBy = ViewBag.SortCourseNameParameter, searchString = Request.QueryString["searchString"], page = Request.QueryString["page"] })
         </th>
         <th>
-            @Html.ActionLink("TeacherName", "Index", new { sortBy = ViewBag.SortTeacherNameParameter, searchString = Request.QueryString["searchString"], page = Request.QueryString["page"] })
+            @Html.ActionLink("Teacher", "Index", new { sortBy = ViewBag.SortTeacherNameParameter, searchString = Request.QueryString["searchString"], page = Request.QueryString["page"] })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.First().StartTime)
+            Start
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.First().EndTime)
+            End
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.First().ClassroomId)
+            Class room
         </th>
         <th></th>
     </tr>
