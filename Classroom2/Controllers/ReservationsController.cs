@@ -80,7 +80,7 @@ namespace Classroom2.Controllers
         // GET: Reservations/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (User.Identity.IsAuthenticated)
+            if (!User.Identity.IsAuthenticated)
                 return RedirectToAction("Index");
             if (id == null)
             {
@@ -91,7 +91,40 @@ namespace Classroom2.Controllers
             {
                 return HttpNotFound();
             }
-            return View(reservation);
+
+            var viewModel = new ReservationViewModel();
+            viewModel.CourseName = reservation.CourseName;
+            viewModel.TeacherName = reservation.TeacherName;
+            viewModel.StartTime = reservation.StartTime;
+            viewModel.EndTime = reservation.EndTime;
+            viewModel.SelectedClassroomId = reservation.ClassroomId;
+
+            viewModel.Classrooms = new List<SelectListItem>();
+            viewModel.Classrooms.Add(new SelectListItem() { Text = "Selecteer een lokaal" });
+            foreach (var classroom in db.Classrooms)
+            {
+
+                if (viewModel.SelectedClassroomId == classroom.Id)
+                {
+                    viewModel.Classrooms.Add(new SelectListItem
+                    {
+                        Text = classroom.Name,
+                        Value = classroom.Id.ToString(),
+                        Selected = true
+                    });
+                }
+                else
+                {
+                    viewModel.Classrooms.Add(new SelectListItem
+                    {
+                        Text = classroom.Name,
+                        Value = classroom.Id.ToString(),
+                        Selected = false
+                    });
+                }
+            }
+
+            return View(viewModel);
         }
 
         // POST: Reservations/Edit/5
@@ -99,13 +132,20 @@ namespace Classroom2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,CourseName,TeacherName,StartTime,EndTime,ClassroomId")] Reservation reservation)
+        public ActionResult Edit(ReservationViewModel reservation, int Id)
         {
-            if (User.Identity.IsAuthenticated)
+            if (!User.Identity.IsAuthenticated)
                 return RedirectToAction("Index");
             if (ModelState.IsValid)
             {
-                db.Entry(reservation).State = EntityState.Modified;
+                var newReservation = db.Reservations.Find(Id);
+                newReservation.CourseName = reservation.CourseName;
+                newReservation.TeacherName = reservation.TeacherName;
+                newReservation.StartTime = reservation.StartTime;
+                newReservation.EndTime = reservation.EndTime;
+                newReservation.ClassroomId = reservation.SelectedClassroomId;
+
+                db.Entry(newReservation).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
