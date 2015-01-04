@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -21,15 +21,14 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Classrooms", "../classroom")</li>
-                    <li>@Html.ActionLink("Buildings", "../building")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-
+                    <li>@Html.ActionLink(@LocalizedValues.navReservations, "../reservations")</li>
+                    <li>@Html.ActionLink(@LocalizedValues.navClassroom, "../classroom")</li>
+                    <li>@Html.ActionLink(@LocalizedValues.navBuilding, "../building")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
+            @Html.ActionLink("NL", "SwitchLanguage", new { language = "nl" })
+            @Html.ActionLink("EN", "SwitchLanguage", new { language = "en" })
         </div>
     </div>
     <div class="container body-content">
