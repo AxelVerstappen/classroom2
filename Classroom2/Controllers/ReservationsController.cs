@@ -39,6 +39,8 @@ namespace Classroom2.Controllers
         // GET: Reservations/Create
         public ActionResult Create()
         {
+            if(User.Identity.IsAuthenticated)
+                return RedirectToAction("Index");
             return View();
         }
 
@@ -49,6 +51,8 @@ namespace Classroom2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,CourseName,TeacherName,StartTime,EndTime,ClassroomId")] Reservation reservation)
         {
+            if (User.Identity.IsAuthenticated)
+                return RedirectToAction("Index");
             if (ModelState.IsValid)
             {
                 db.Reservations.Add(reservation);
@@ -62,6 +66,8 @@ namespace Classroom2.Controllers
         // GET: Reservations/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (User.Identity.IsAuthenticated)
+                return RedirectToAction("Index");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -81,6 +87,8 @@ namespace Classroom2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,CourseName,TeacherName,StartTime,EndTime,ClassroomId")] Reservation reservation)
         {
+            if (User.Identity.IsAuthenticated)
+                return RedirectToAction("Index");
             if (ModelState.IsValid)
             {
                 db.Entry(reservation).State = EntityState.Modified;
@@ -93,6 +101,8 @@ namespace Classroom2.Controllers
         // GET: Reservations/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (User.Identity.IsAuthenticated)
+                return RedirectToAction("Index");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -110,6 +120,8 @@ namespace Classroom2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            if (User.Identity.IsAuthenticated)
+                return RedirectToAction("Index");
             Reservation reservation = db.Reservations.Find(id);
             db.Reservations.Remove(reservation);
             db.SaveChanges();
