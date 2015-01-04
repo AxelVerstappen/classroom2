@@ -1,0 +1,29 @@
+﻿@model List<Classroom2.Models.Reservation>
+@{
+    Layout = "~/Views/Shared/_PdfLayout.cshtml";
+}
+<paragraph style="font-family:Helvetica;font-size:18;font-style:italic;">
+    <chunk red="0" green="0" blue="0">@ViewBag.Title</chunk>
+</paragraph>
+<itext creationdate="@DateTime.Now.ToString()" producer="RazorPDF">
+    <table width="100%" cellpadding="0.5" cellspacing="0.5" widths="6;3;4;4;1">
+        <row>
+            <cell>Course</cell>
+            <cell>Teacher</cell>
+            <cell>Time</cell>
+            <cell>Time End</cell>
+            <cell></cell>
+        </row>
+
+        @foreach (var item in Model)
+        {
+            <row>
+                <cell>@item.CourseName</cell>
+                <cell>@item.TeacherName</cell>
+                <cell>@item.StartTime</cell>
+                <cell>@item.EndTime</cell>
+                <cell>@item.ClassroomId</cell>
+            </row>
+        }
+    </table>
+</itext>

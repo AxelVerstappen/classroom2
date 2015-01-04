@@ -56,7 +56,6 @@ C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\bin\Microsoft.Asp
 C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\bin\Microsoft.AspNet.Identity.EntityFramework.xml
 C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\obj\Debug\Classroom2.dll
 C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\obj\Debug\Classroom2.pdb
-C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\obj\Debug\Classroom2.csprojResolveAssemblyReference.cache
 C:\xampp\htdocs\ASP\classroom2\Classroom2\bin\Classroom2.dll.config
 C:\xampp\htdocs\ASP\classroom2\Classroom2\bin\Classroom2.dll
 C:\xampp\htdocs\ASP\classroom2\Classroom2\bin\Classroom2.pdb
@@ -118,3 +117,7 @@ C:\xampp\htdocs\ASP\classroom2\Classroom2\bin\Microsoft.AspNet.Identity.EntityFr
 C:\xampp\htdocs\ASP\classroom2\Classroom2\obj\Debug\Classroom2.dll
 C:\xampp\htdocs\ASP\classroom2\Classroom2\obj\Debug\Classroom2.pdb
 C:\xampp\htdocs\ASP\classroom2\Classroom2\obj\Debug\Classroom2.csprojResolveAssemblyReference.cache
+C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\bin\itextsharp.dll
+C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\bin\RazorPDF.dll
+C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\bin\EntityFramework.xml
+C:\Users\Thomas\Documents\School\ASP.NET\classroom2\Classroom2\bin\System.Web.Mvc.xml

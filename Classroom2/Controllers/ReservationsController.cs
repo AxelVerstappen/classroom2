@@ -10,6 +10,8 @@ using Classroom2.Context;
 using Classroom2.Models;
 using PagedList;
 using PagedList.Mvc;
+using RazorPDF;
+using iTextSharp;
 
 namespace Classroom2.Controllers
 {
@@ -217,6 +219,15 @@ namespace Classroom2.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult Pdf()
+        {
+            var list = db.Reservations.ToList();
+            var pdf = new PdfResult(list, "Pdf");
+            pdf.ViewBag.Title = "Reservations";
+            // With no Model and default view name.  Pdf is always the default view name
+            return pdf;
         }
     }
 }
