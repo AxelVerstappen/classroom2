@@ -142,5 +142,12 @@ namespace Classroom2.Controllers
                 return View();
             }
         }
+
+        public ActionResult SwitchLanguage(string language)
+        {
+            Session.Add("taal", language);
+            return RedirectToAction("Index");
+        }
     }
+
 }

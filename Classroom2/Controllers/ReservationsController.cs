@@ -229,5 +229,11 @@ namespace Classroom2.Controllers
             // With no Model and default view name.  Pdf is always the default view name
             return pdf;
         }
+
+        public ActionResult SwitchLanguage(string language)
+        {
+            Session.Add("taal", language);
+            return RedirectToAction("Index");
+        }
     }
 }
