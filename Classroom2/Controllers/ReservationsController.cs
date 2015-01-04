@@ -39,9 +39,21 @@ namespace Classroom2.Controllers
         // GET: Reservations/Create
         public ActionResult Create()
         {
-            if(User.Identity.IsAuthenticated)
+            if(!User.Identity.IsAuthenticated)
                 return RedirectToAction("Index");
-            return View();
+            var viewModel = new ReservationViewModel();
+            viewModel.Classrooms = new List<SelectListItem>();
+            viewModel.Classrooms.Add(new SelectListItem() { Text = "Selecteer een lokaal" });
+            foreach (var classroom in db.Classrooms)
+            {
+                viewModel.Classrooms.Add(new SelectListItem
+                {
+                    Text = classroom.Name,
+                    Value = classroom.Id.ToString(),
+                    Selected = false
+                });
+            }
+            return View(viewModel);
         }
 
         // POST: Reservations/Create
@@ -49,18 +61,20 @@ namespace Classroom2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,CourseName,TeacherName,StartTime,EndTime,ClassroomId")] Reservation reservation)
+        public ActionResult Create(ReservationViewModel reservation)
         {
-            if (User.Identity.IsAuthenticated)
+            if (!User.Identity.IsAuthenticated)
                 return RedirectToAction("Index");
-            if (ModelState.IsValid)
-            {
-                db.Reservations.Add(reservation);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            var newReservation = new Reservation();
+            newReservation.CourseName = reservation.CourseName;
+            newReservation.TeacherName = reservation.TeacherName;
+            newReservation.StartTime = reservation.StartTime;
+            newReservation.EndTime = reservation.EndTime;
+            newReservation.ClassroomId = reservation.SelectedClassroomId;
 
-            return View(reservation);
+            db.Reservations.Add(newReservation);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // GET: Reservations/Edit/5
