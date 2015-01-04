@@ -183,7 +183,7 @@ namespace Classroom2.Controllers
         // GET: Reservations/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (User.Identity.IsAuthenticated)
+            if (!User.Identity.IsAuthenticated)
                 return RedirectToAction("Index");
             if (id == null)
             {
@@ -202,7 +202,7 @@ namespace Classroom2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            if (User.Identity.IsAuthenticated)
+            if (!User.Identity.IsAuthenticated)
                 return RedirectToAction("Index");
             Reservation reservation = db.Reservations.Find(id);
             db.Reservations.Remove(reservation);
