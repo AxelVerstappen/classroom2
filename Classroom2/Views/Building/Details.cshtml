@@ -18,25 +18,57 @@
             @Html.DisplayFor(model => model.Name)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CoordX)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CoordX)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CoordY)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CoordY)
-        </dd>
-
+        <!--<dt>
+            @*@Html.DisplayNameFor(model => model.Adres)*@
+        </dt>-->
+        <!--<dd>
+            @*@Html.DisplayFor(model => model.CoordX)*@
+        </dd>-->
     </dl>
+    <h2>@Html.DisplayNameFor(model => model.Adres)</h2>
+    <div class="map">
+    </div>
+
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+@section Scripts {
+    <script type="text/javascript"
+            src="http://maps.googleapis.com/maps/api/js?API_KEY=AIzaSyCFBqcehiSLbhUOpBHPlXBvj0qB70vAdzk">
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+        var map;
+        var elevator;
+        var latlng;
+        var p;
+
+        var address = '@Html.DisplayFor(model => model.Adres)';
+
+        $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address='+address+'&sensor=false', null, function (data) {
+            p = data.results[0].geometry.location
+            latlng = new google.maps.LatLng(p.lat, p.lng);
+            render();
+            console.log(latlng);
+        });
+        
+        function render() {
+            var myOptions = {
+                zoom: 10,
+                center: new google.maps.LatLng(p.lat, p.lng)
+            };
+
+            map = new google.maps.Map($('.map')[0], myOptions);
+
+            new google.maps.Marker({
+                position: latlng,
+                map: map
+            });
+        }
+
+        });
+    </script>
+    }
