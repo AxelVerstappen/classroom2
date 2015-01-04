@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using Classroom2.Controllers;
+using System.Web;
 using System.Web.Mvc;
 
 namespace Classroom2
@@ -8,6 +9,7 @@ namespace Classroom2
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            filters.Add(new LanguageFilter());
         }
     }
 }
