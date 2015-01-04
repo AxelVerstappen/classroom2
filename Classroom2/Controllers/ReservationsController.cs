@@ -32,13 +32,13 @@ namespace Classroom2.Controllers
 
             switch (sortBy)
             {
-                case "Name desc":
+                case "CourseName desc":
                     reservations = reservations.OrderByDescending(r => r.CourseName);
                     break;
-                case "Places desc":
+                case "TeacherName desc":
                     reservations = reservations.OrderByDescending(r => r.TeacherName);
                     break;
-                case "Places":
+                case "TeacherName":
                     reservations = reservations.OrderBy(r => r.TeacherName);
                     break;
                 default:
