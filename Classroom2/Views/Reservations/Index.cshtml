@@ -1,4 +1,4 @@
-@using PagedList;
+﻿@using PagedList;
 @using PagedList.Mvc;
 @model IPagedList<Classroom2.Models.Reservation>
 
@@ -9,12 +9,8 @@
 @if (User.Identity.IsAuthenticated)
 {
     <p>
-<<<<<<< HEAD
-        @Html.ActionLink("Create New", "Create")
-        @Html.ActionLink("PDF", "Pdf")
-=======
         @Html.ActionLink(@LocalizedValues.lblCreate, "Create")
->>>>>>> origin/master
+        @Html.ActionLink("PDF", "Pdf")
     </p>
 }
 
